@@ -1,8 +1,8 @@
 import json
 import os
 import sys
-import itertools
 import copy
+import itertools
 import random
 
 from random_payload_generator import RandomPayloadGenerator
@@ -18,6 +18,7 @@ def load_json(filename):
 
 
 def generate_output(payload):
+    """Generate output JSON file with indentation."""
     global output_num
     filename = "generated_{}.json".format(output_num)
     with open(filename, 'w') as f:
@@ -90,6 +91,7 @@ def fuzz_change_items(original_payload, min, max):
 
 
 def main(filename):
+    """Entry point to this script."""
     original_payload = load_json(filename)
     fuzz_remove_items(original_payload)
     fuzz_add_items(original_payload, 1, 4, 2)
